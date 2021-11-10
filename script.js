@@ -3,8 +3,14 @@ const typeDisplayElement = document.getElementById("typeDisplay");
 const typeInputElement = document.getElementById("typeInput");
 const timer = document.getElementById("timer");
 
+const typeSound = new Audio("./audio/typing-sound.mp3");
+
 /* inputテキスト入力。合っているかどうかの判定 */
 typeInputElement.addEventListener("input", () => {
+  /* タイプ音をつける */
+  typeSound.play();
+  typeSound.currentTime = 0;
+
   /* 文字と文字を比較する */
   /* ディスプレイに表示されてるSpanタグを取得 */
   const sentence = typeDisplayElement.querySelectorAll("span");
@@ -26,6 +32,7 @@ typeInputElement.addEventListener("input", () => {
     }
   });
 
+  /* 次の文章へ */
   if (correct) RenderNextSentence();
 });
 
@@ -66,17 +73,27 @@ async function RenderNextSentence() {
 }
 
 let startTime;
+let originTime = 30;
 /* カウントアップを開始する。 */
 function StartTimer() {
-  timer.innerText = 0;
-  startTime = new Date();
+  timer.innerText = originTime;
+  startTime = new Date(); /* 現在の時刻を表示 */
+  console.log(startTime);
   setInterval(() => {
-    timer.innerText = getTimerTime();
+    timer.innerText = originTime - getTimerTime(); /* １秒ずれて呼び出される */
+    if (timer.innerText <= 0) TimeUp();
   }, 1000);
 }
 
 function getTimerTime() {
-  return Math.floor((new Date() - startTime) / 1000);
+  return Math.floor(
+    (new Date() - startTime) / 1000
+  ); /* 現在の時刻 - １秒前の時刻 = 1s*/
+}
+
+function TimeUp() {
+  console.log("next sentence");
+  RenderNextSentence();
 }
 
 RenderNextSentence();
