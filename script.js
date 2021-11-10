@@ -4,6 +4,8 @@ const typeInputElement = document.getElementById("typeInput");
 const timer = document.getElementById("timer");
 
 const typeSound = new Audio("./audio/typing-sound.mp3");
+const wrongSound = new Audio("./audio/wrong.mp3");
+const correctSound = new Audio("./audio/correct.mp3");
 
 /* inputテキスト入力。合っているかどうかの判定 */
 typeInputElement.addEventListener("input", () => {
@@ -29,11 +31,18 @@ typeInputElement.addEventListener("input", () => {
       characterSpan.classList.add("incorrect");
       characterSpan.classList.remove("correct");
       correct = false;
+      wrongSound.volume = 0.3;
+      wrongSound.play();
+      wrongSound.currentTime = 0;
     }
   });
 
   /* 次の文章へ */
-  if (correct) RenderNextSentence();
+  if (correct) {
+    correctSound.play();
+    correctSound.currentTime = 0;
+    RenderNextSentence();
+  }
 });
 
 /* ちゃんとthenかawaitで待たないと欲しいデータが入らない。 */

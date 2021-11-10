@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Zen+Antique&display=swap");
+
 * {
   box-sizing: border-box;
 }
@@ -8,20 +10,30 @@ body {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background-color: rgb(153, 110, 110);
-}
-
-body,
-.type-input {
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  /* background-color: rgb(185, 230, 224); */
+  background: linear-gradient(
+    to left top,
+    rgb(219, 143, 143),
+    rgb(121, 231, 173)
+  );
+  font-family: "Poppins", sans-serif;
 }
 
 .container {
-  background-color: rgb(202, 87, 87);
-  padding: 5rem;
+  background-color: rgb(93, 183, 235);
+  font-size: 2.4rem;
+  font-weight: 600;
+  padding: 4rem;
   border-radius: 0.5rem;
-  width: 700px;
+  width: 1000px;
+  min-height: 600px;
   max-width: 90%;
+  box-shadow: 1px 5px 6px rgb(80, 80, 80);
+}
+
+.container .type-input {
+  margin-top: 4rem;
+  font-size: 3rem;
 }
 
 .timer {
@@ -42,7 +54,7 @@ body,
   border: 2px solid rgb(158, 52, 52);
   outline: none;
   width: 100%;
-  height: 8rem;
+  height: 14rem;
   margin: auto;
   resize: none;
   padding: 0.5rem 1rem;
