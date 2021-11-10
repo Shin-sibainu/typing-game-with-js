@@ -1,4 +1,4 @@
-const RANDOM_SENTENCE_URL_API = "http://api.quotable.io/random";
+const RANDOM_SENTENCE_URL_API = "https://api.quotable.io/random";
 const typeDisplayElement = document.getElementById("typeDisplay");
 const typeInputElement = document.getElementById("typeInput");
 const timer = document.getElementById("timer");
